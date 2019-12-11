@@ -2,6 +2,7 @@ import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { HttpClientModule } from '@angular/common/http';
+import { HTTP_INTERCEPTORS } from '@angular/common/http';
 
 
 import { NgbCarouselModule, NgbCollapseModule, NgbDropdownModule, NgbModalModule, NgbPaginationModule } from '@ng-bootstrap/ng-bootstrap';
@@ -26,6 +27,7 @@ import { MovieDetailsComponent } from './movies/movie-details/movie-details.comp
 import { MovieCardComponent } from './shared/components/movie-card/movie-card.component';
 import { HeaderComponent } from './core/layout/header/header.component';
 import { MovieListComponent } from './shared/components/movie-list/movie-list.component';
+import { HttpTokenInterceptor } from './core/interceptors/http-token.interceptor';
 
 @NgModule({
   declarations: [
@@ -60,7 +62,9 @@ import { MovieListComponent } from './shared/components/movie-list/movie-list.co
     NgbModalModule,
     NgbPaginationModule,
   ],
-  providers: [],
+  providers: [
+    { provide: HTTP_INTERCEPTORS, useClass: HttpTokenInterceptor, multi: true },
+  ],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
