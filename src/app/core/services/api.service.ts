@@ -46,7 +46,7 @@ export class ApiService {
       });
     }
     return this.http
-      .get(`${environment.apiUrl}${path}`, { params: params })
+      .get(`${environment.apiUrl}${path}`, { params })
       .pipe(
         map(response => {
           return response as PagedResults<any>;

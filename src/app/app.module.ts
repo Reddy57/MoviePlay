@@ -18,6 +18,8 @@ import { CreateCrewComponent } from './admin/movies/create-crew/create-crew.comp
 import { UsersListComponent } from './admin/users/users-list/users-list.component';
 import { MovieDetailsComponent } from './movies/movie-details/movie-details.component';
 import { MovieCardComponent } from './shared/components/movie-card/movie-card.component';
+import { HeaderComponent } from './core/layout/header/header.component';
+import { MovieListComponent } from './shared/components/movie-list/movie-list.component';
 
 @NgModule({
   declarations: [
@@ -36,7 +38,9 @@ import { MovieCardComponent } from './shared/components/movie-card/movie-card.co
     CreateCrewComponent,
     UsersListComponent,
     MovieDetailsComponent,
-    MovieCardComponent
+    MovieCardComponent,
+    HeaderComponent,
+    MovieListComponent
   ],
   imports: [
     BrowserModule,
