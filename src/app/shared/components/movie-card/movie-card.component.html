@@ -4,9 +4,7 @@
        class="img-fluid card-img-top" />
   <div class="card-body d-none d-sm-flex row no-gutters">
     <div class="col-5 card-title">
-      <span class="label-year text-secondary p-1 border-secondary">{{
-        movie.releaseDate | date: 'yyyy'
-        }}</span>
+      {{ movie.releaseDate | date: 'yyyy'}}
     </div>
     <div class="col-2 text-left">
       <span class="text-primary">
@@ -17,7 +15,9 @@
       </span>
     </div>
     <div class="col-5 text-right">
-      <span class="badge badge-secondary"> {{ movie.rating }}</span>
+      <span class="badge"
+            [ngClass]="{'badge-success': movie.rating > 8 ,'badge-danger': movie.rating < 6, 'badge-warning' : movie.rating> 6 && movie.rating < 8}">
+        {{ movie.rating }}</span>
     </div>
   </div>
 
