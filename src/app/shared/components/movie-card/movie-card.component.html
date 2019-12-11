@@ -1,1 +1,37 @@
-<p>movie-card works!</p>
+<div class="card m-3 shadow  bg-light">
+  <img src="{{ movie.posterUrl }}"
+       alt="{{ movie.title }}"
+       class="img-fluid card-img-top" />
+  <div class="card-body d-none d-sm-flex row no-gutters">
+    <div class="col-5 card-title">
+      <span class="label-year text-secondary p-1 border-secondary">{{
+        movie.releaseDate | date: 'yyyy'
+        }}</span>
+    </div>
+    <div class="col-2 text-left">
+      <span class="text-primary">
+        <i class="fa-heart fa-lg"
+           style="cursor:pointer;"
+           [ngClass]="{ far: !movie.isFavorite, fas: movie.isFavorite }"
+           (click)="toggleFavorite(movie)"></i>
+      </span>
+    </div>
+    <div class="col-5 text-right">
+      <span class="badge badge-secondary"> {{ movie.rating }}</span>
+    </div>
+  </div>
+
+  <button type="button"
+          *ngIf="movie.isPurchased"
+          class="btn btn-success btn-sm btn-block rounded-0">
+    BOUGHT
+    <i class="fas fa-check-circle p-1"></i>
+  </button>
+
+  <button type="button"
+          *ngIf="!movie.isPurchased"
+          (click)="buyMovie(movie)"
+          class="btn btn-primary btn-sm btn-block rounded-0">
+    BUY <i class="fas fa-shopping-cart p-1"></i>
+  </button>
+</div>
