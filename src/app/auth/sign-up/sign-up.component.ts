@@ -12,6 +12,7 @@ export class SignUpComponent implements OnInit {
   // email = new FormControl('');
   // all Reactive Controls inherit from AbstractControl class
   signupForm: FormGroup;
+  submitted = false;
 
   constructor(private fb: FormBuilder) {
 
@@ -29,12 +30,17 @@ export class SignUpComponent implements OnInit {
 
   }
 
+  // convenience getter for easy access to form fields
+  get f() { return this.signupForm.controls; }
+
+
   buildForm() {
     this.signupForm = this.fb.group({
       firstName: ['', Validators.required],
       lastName: ['', Validators.required],
       email: ['', [Validators.required, Validators.email]],
-      password: ['', Validators.required],
+      password: ['', [Validators.required, Validators.minLength(6)]],
+      confirmPassword: ['', [Validators.required, Validators.minLength(6)]]
     });
 
 
@@ -51,6 +57,13 @@ export class SignUpComponent implements OnInit {
   onSubmit() {
     console.log('submit clicked');
     console.log(this.signupForm.value);
+
+    this.submitted = true;
+    // stop here if form is invalid
+    if (this.signupForm.invalid) {
+      return;
+    }
+
   }
 
 }
