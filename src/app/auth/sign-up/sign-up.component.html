@@ -1,1 +1,98 @@
-<p>sign-up works!</p>
+<div class="container py-3">
+  <div class="row">
+    <div class="mx-auto col-sm-6">
+      <!-- form user info -->
+      <div class="card">
+        <div class="card-header">
+          <h4 class="mb-0">Sign Up</h4>
+        </div>
+        <div class="card-body">
+          <form [formGroup]="signupForm"
+                (ngSubmit)="onSubmit(signupForm)">
+            <div class="form-group row">
+              <label class="col-lg-3 col-form-label form-control-label">First name</label>
+              <div class="col-lg-9">
+                <input class="form-control"
+                       formControlName="firstName"
+                       type="text">
+                <div class="alert alert-danger"
+                     *ngIf=" (signupForm.controls.firstName.dirty ||signupForm.controls.firstName.touched ) &&
+                     signupForm.controls.firstName.invalid && signupForm.controls.firstName.errors.required">
+                  First Name is is required.
+                </div>
+
+              </div>
+            </div>
+            <div class="form-group row">
+              <label class="col-lg-3 col-form-label form-control-label">Last name</label>
+              <div class="col-lg-9">
+                <input class="form-control"
+                       formControlName="lastName"
+                       type="text">
+                <div class="alert alert-danger"
+                     *ngIf=" (signupForm.controls.lastName.dirty ||signupForm.controls.lastName.touched ) &&
+                     signupForm.controls.lastName.invalid && signupForm.controls.lastName.errors.required">
+                  Last Name is required.
+                </div>
+              </div>
+            </div>
+            <div class="form-group row">
+              <label class="col-lg-3 col-form-label form-control-label">Email</label>
+              <div class="col-lg-9">
+                <input class="form-control"
+                       formControlName="email"
+                       type="email">
+                <div class="alert alert-danger"
+                     *ngIf=" (signupForm.controls.email.dirty ||signupForm.controls.email.touched ) &&
+                     signupForm.controls.email.invalid && signupForm.controls.email.errors.required">
+                  Email is required.
+                </div>
+              </div>
+            </div>
+
+            <div class="form-group row">
+              <label class="col-lg-3 col-form-label form-control-label">Password</label>
+              <div class="col-lg-9">
+                <input class="form-control"
+                       formControlName="password"
+                       type="password">
+                <div class="alert alert-danger"
+                     *ngIf=" (signupForm.controls.password.dirty ||signupForm.controls.password.touched ) &&
+                     signupForm.controls.password.invalid && signupForm.controls.password.errors.required">
+                  Password required.
+                </div>
+              </div>
+            </div>
+            <div class="form-group row">
+              <label class="col-lg-3 col-form-label form-control-label">Confirm</label>
+              <div class="col-lg-9">
+                <input class="form-control"
+                       formControlName="password"
+                       type="password">
+
+
+              </div>
+            </div>
+            <div class="form-group row">
+              <label class="col-lg-3 col-form-label form-control-label"></label>
+              <div class="col-lg-9">
+
+                <input type="submit"
+                       class="btn btn-primary"
+                       value="Submit">
+              </div>
+            </div>
+          </form>
+        </div>
+      </div>
+      <!-- /form user info -->
+    </div>
+  </div>
+</div>
+
+
+
+
+<div>
+  {{signupForm.controls.email.errors}}
+</div>
