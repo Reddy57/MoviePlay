@@ -1,37 +1,17 @@
-<div class="card m-3 shadow  bg-light">
+<div class="card mb-4 shadow  bg-light">
   <img src="{{ movie.posterUrl }}"
        alt="{{ movie.title }}"
        class="img-fluid card-img-top" />
   <div class="card-body row no-gutters">
-    <div class="col-5 card-title">
+    <div class="col-6 card-title text-info font-weight-bold">
       {{ movie.releaseDate | date: 'yyyy'}}
     </div>
-    <div class="col-2 text-left">
-      <span class="text-primary">
-        <i class="fa-heart fa-lg"
-           style="cursor:pointer;"
-           [ngClass]="{ far: !movie.isFavorite, fas: movie.isFavorite }"
-           (click)="toggleFavorite(movie)"></i>
-      </span>
-    </div>
-    <div class="col-5 text-right">
-      <span class="badge"
-            [ngClass]="{'badge-success': movie.rating > 8 ,'badge-danger': movie.rating < 6, 'badge-warning' : movie.rating> 6 && movie.rating < 8}">
-        {{ movie.rating }}</span>
+
+    <div class="col-6 text-right">
+      <span class="badge badge-warning">
+        {{ movie.rating | number: '1.2-2' }}</span>
     </div>
   </div>
 
-  <button type="button"
-          *ngIf="movie.isPurchased"
-          class="btn btn-success btn-sm btn-block rounded-0">
-    BOUGHT
-    <i class="fas fa-check-circle p-1"></i>
-  </button>
 
-  <button type="button"
-          *ngIf="!movie.isPurchased"
-          (click)="buyMovie(movie)"
-          class="btn btn-primary btn-sm btn-block rounded-0">
-    BUY <i class="fas fa-shopping-cart p-1"></i>
-  </button>
 </div>

@@ -1,16 +1,4 @@
 <div class="rounded">
-  <ngb-carousel>
-    <ng-template ngbSlide
-                 *ngFor="let movie of movies?.slice(0, 8)">
-      <img src="{{movie.backdropUrl}}"
-           alt="{{movie.title}}"
-           class="img-fluid w-100">
-      <div class="carousel-caption">
-        <h2 class="d-none d-sm-block">{{movie.title}}</h2>
-      </div>
-    </ng-template>
-  </ngb-carousel>
-
   <div class="container-fluid bg-light">
     <div class="row">
       <div class="col-6 col-lg-3 col-sm-4 col-xl-2"

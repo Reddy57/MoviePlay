@@ -15,7 +15,7 @@ export class MovieService {
   }
 
   getTopGrossingMovies(): Observable<Movie[]> {
-    return this.apiService.getAll('/movies/topgrossing');
+    return this.apiService.getAll('/movies/toprevenue');
   }
 
   getMoviesByGenre(genreId: number): Observable<Movie[]> {

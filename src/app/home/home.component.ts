@@ -13,7 +13,7 @@ export class HomeComponent implements OnInit {
   constructor(private movieService: MovieService) { }
 
   ngOnInit() {
-    this.movieService.getTopGrossingMovies().subscribe(m => {
+    this.movieService.getTopRatedMovies().subscribe(m => {
       this.movies = m;
     });
   }
