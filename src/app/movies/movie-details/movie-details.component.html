@@ -1,3 +1,21 @@
-<h1>
-  Movie Details
-</h1>
+<div class="bg-image"
+     [style.backgroundImage]="'url('+ movie?.backdropUrl +')'">
+
+  <div class="row">
+    <div class="col-md-3 offset-2">
+
+      <!-- Movie Card row -->
+      <div>
+        <img src="{{ movie?.posterUrl }}"
+             alt="{{ movie?.title }}"
+             class="card-img-top" />
+      </div>
+
+    </div>
+
+    <div class="col-md-6">
+
+    </div>
+
+  </div>
+</div>

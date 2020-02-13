@@ -1,2 +1,15 @@
 /* You can add global styles to this file, and also import other style files */
 @import "~bootstrap/dist/css/bootstrap.min.css";
+
+.bg-image {
+  height: 28.1rem;
+  width: 100%;
+  background-size: cover;
+  background-color: #07131b;
+  background-blend-mode: overlay;
+}
+
+.card-img-top {
+  width: 300px;
+  height: 450px;
+}
