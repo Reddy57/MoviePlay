@@ -1,18 +1,23 @@
 import { Genre } from './genre';
+import { Cast } from './cast';
 
 export interface Movie {
 
   id: number;
   title: string;
-  tagline: string;
   posterUrl: string;
   backdropUrl: string;
+  rating: number;
+  overview: string;
+  tagline: string;
+  budget: number;
+  revenue: number;
+  imdbUrl: string;
+  tmdbUrl: string;
   releaseDate: Date;
   runTime: number;
-  rating: number;
   price: number;
+  casts: Cast[];
   genres: Genre[];
-  isFavorite: boolean;
-  isPurchased: boolean;
 
 }

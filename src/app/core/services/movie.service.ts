@@ -22,5 +22,8 @@ export class MovieService {
     return this.apiService.getAll(`${'/movies/genre/'}${genreId}`);
   }
 
+  getMovieDetails(id: number): Observable<Movie> {
+    return this.apiService.getOne(`${'/movies/'}${id}`);
+  }
 
 }
