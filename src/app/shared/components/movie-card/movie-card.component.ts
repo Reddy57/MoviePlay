@@ -9,20 +9,12 @@ import { Movie } from '../../models/movie';
 export class MovieCardComponent implements OnInit {
 
   @Input() movie: Movie;
-  @Output() toggleFavoriteEvent = new EventEmitter<Movie>();
-  @Output() buyMovieEvent = new EventEmitter<Movie>();
 
   constructor() { }
 
   ngOnInit() {
   }
 
-  toggleFavorite(movie: Movie) {
-    this.toggleFavoriteEvent.emit(movie);
-  }
-  buyMovie(movie: Movie) {
 
-    this.buyMovieEvent.emit(movie);
-  }
 
 }

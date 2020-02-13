@@ -1,17 +1,8 @@
 <div class="card mb-4 shadow  bg-light">
-  <img src="{{ movie.posterUrl }}"
-       alt="{{ movie.title }}"
-       class="img-fluid card-img-top" />
-  <div class="card-body row no-gutters">
-    <div class="col-6 card-title text-info font-weight-bold">
-      {{ movie.releaseDate | date: 'yyyy'}}
-    </div>
-
-    <div class="col-6 text-right">
-      <span class="badge badge-warning">
-        {{ movie.rating | number: '1.2-2' }}</span>
-    </div>
-  </div>
-
+  <a [routerLink]="[ '/movie/', movie.id ]">
+    <img src="{{ movie.posterUrl }}"
+         alt="{{ movie.title }}"
+         class="img-fluid card-img-top" />
+  </a>
 
 </div>

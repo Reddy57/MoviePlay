@@ -30,6 +30,7 @@ import { MovieListComponent } from './shared/components/movie-list/movie-list.co
 import { HttpTokenInterceptor } from './core/interceptors/http-token.interceptor';
 import { BuyButtonComponent } from './shared/components/buy-button/buy-button.component';
 import { FavoriteButtonComponent } from './shared/components/favorite-button/favorite-button.component';
+import { MovieCardListComponent } from './movies/movie-card-list/movie-card-list.component';
 
 @NgModule({
   declarations: [
@@ -52,7 +53,8 @@ import { FavoriteButtonComponent } from './shared/components/favorite-button/fav
     HeaderComponent,
     MovieListComponent,
     BuyButtonComponent,
-    FavoriteButtonComponent
+    FavoriteButtonComponent,
+    MovieCardListComponent
   ],
   imports: [
     BrowserModule,
