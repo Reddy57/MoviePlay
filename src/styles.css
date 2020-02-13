@@ -1,5 +1,6 @@
 /* You can add global styles to this file, and also import other style files */
 @import "~bootstrap/dist/css/bootstrap.min.css";
+@import "~@fortawesome/fontawesome-free/css/all.min.css";
 
 .bg-image {
   height: 28.1rem;
@@ -12,4 +13,12 @@
 .card-img-top {
   width: 300px;
   height: 450px;
+}
+
+.list-group-item {
+  background-color: transparent;
+  border: 1px solid;
+  border-left: 0;
+  border-right: 0;
+  border-top: 0;
 }
