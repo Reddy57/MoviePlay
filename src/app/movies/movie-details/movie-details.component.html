@@ -13,7 +13,47 @@
 
     </div>
 
-    <div class="col-md-6">
+    <div class="col-md-5">
+
+      <div class="row mt-2">
+        <div class="col-12">
+          <h1 class="text-white"> {{movie?.title}}
+          </h1>
+          <small class="text-muted"> {{movie.tagline}} </small>
+        </div>
+
+      </div>
+
+      <div class="row">
+        <div class="col-4 text-secondary font-weight-bold mt-2">
+          {{movie?.runTime}} m | {{movie?.releaseDate | date:'yyyy'}}
+        </div>
+        <div class="col-8">
+          <ng-container *ngFor="let g of movie?.genres">
+            <a href="#"
+               *ngIf="g"
+               [routerLink]="['/genre/', g?.id ]"
+               class="badge badge-pill badge-dark ml-1"> {{g?.name}}</a>
+          </ng-container>
+        </div>
+      </div>
+
+      <div class="row">
+        <div class="col-4 mt-3">
+          <h4>
+            <span *ngIf="movie?.rating > 0"
+                  class="badge badge-warning">
+              {{movie?.rating | number:'1.1-1'}}
+            </span>
+          </h4>
+        </div>
+      </div>
+
+      <div class="row">
+        <div class="col-12 text-light mt-2">
+          {{movie?.overview}}
+        </div>
+      </div>
 
     </div>
 
