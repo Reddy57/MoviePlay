@@ -20,7 +20,7 @@
         <div class="col-12">
           <h1 class="text-white"> {{movie?.title}}
           </h1>
-          <small class="text-muted"> {{movie.tagline}} </small>
+          <small class="text-muted"> {{movie?.tagline}} </small>
         </div>
 
       </div>
@@ -79,9 +79,16 @@
                   class="btn btn-outline-light btn-lg btn-block btn-sm"> <i class="fas fa-play mr-1"></i> TRAILER
           </button>
         </li>
-        <li class="list-group-item"><button type="button"
+        <li class="list-group-item">
+          <button type="button"
+                  *ngIf="!currentMoviePurchased"
                   (click)="buyMovie(movie)"
-                  class="btn btn-light btn-lg btn-block btn-sm"> BUY {{movie.price | currency}} </button></li>
+                  class="btn btn-light btn-lg btn-block btn-sm"> BUY {{movie?.price | currency}} </button>
+
+          <button type="button"
+                  *ngIf="currentMoviePurchased"
+                  class="btn btn-light btn-lg btn-block btn-sm"> WATCH MOVIE </button>
+        </li>
       </ul>
 
     </div>
@@ -131,7 +138,7 @@
       <table class="table">
 
         <tbody>
-          <tr *ngFor="let cast of movie.casts">
+          <tr *ngFor="let cast of movie?.casts">
             <td> <img src="{{ cast?.profilePath }}"
                    class="cast-small-img rounded-circle"
                    alt="{{ cast?.name }}" /> </td>

@@ -4,6 +4,7 @@ import { NgbActiveModal } from '@ng-bootstrap/ng-bootstrap';
 import { Purchase } from 'src/app/shared/models/purchase';
 import { AuthenticationService } from 'src/app/core/services/authentication.service';
 import { UserService } from 'src/app/core/services/user.service';
+import { UserDataService } from 'src/app/core/services/user-data.service';
 
 @Component({
   selector: 'app-movie-purchase-confirm',
@@ -16,11 +17,8 @@ export class MoviePurchaseConfirmComponent implements OnInit {
   purchase: Purchase;
   isAuthenticated: boolean;
 
-  constructor(public activeModal: NgbActiveModal,
-    // tslint:disable-next-line: align
-    private authService: AuthenticationService,
-    // tslint:disable-next-line: align
-    private userService: UserService, ) { }
+  // tslint:disable-next-line: max-line-length
+  constructor(public activeModal: NgbActiveModal, private authService: AuthenticationService, private userService: UserService, private userDataService: UserDataService) { }
 
   ngOnInit() {
     this.authService.isAuthenticated.subscribe(isAuthenticated => {
@@ -38,7 +36,7 @@ export class MoviePurchaseConfirmComponent implements OnInit {
 
     this.userService.purchaseMovie(this.purchase).subscribe(
       () => {
-
+        this.userDataService.UpdateAndGetPurchasedMovies();
         this.activeModal.close();
       },
       (err: any) => {

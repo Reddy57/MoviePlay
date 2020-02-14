@@ -5,6 +5,7 @@ import { ActivatedRoute, Router } from '@angular/router';
 import { AuthenticationService } from 'src/app/core/services/authentication.service';
 import { NgbModal } from '@ng-bootstrap/ng-bootstrap';
 import { MoviePurchaseConfirmComponent } from '../movie-purchase-confirm/movie-purchase-confirm.component';
+import { UserDataService } from 'src/app/core/services/user-data.service';
 
 @Component({
   selector: 'app-movie-details',
@@ -16,9 +17,9 @@ export class MovieDetailsComponent implements OnInit {
   movie: Movie;
   id: number;
   isAuthenticated = false;
-
+  currentMoviePurchased: boolean;
   // tslint:disable-next-line: max-line-length
-  constructor(private movieService: MovieService, private route: ActivatedRoute, private authService: AuthenticationService, private router: Router, private modalService: NgbModal) { }
+  constructor(private movieService: MovieService, private route: ActivatedRoute, private authService: AuthenticationService, private router: Router, private modalService: NgbModal, private userDataService: UserDataService) { }
 
   ngOnInit() {
     this.authService.isAuthenticated.subscribe(isAuthenticated => {
@@ -31,8 +32,8 @@ export class MovieDetailsComponent implements OnInit {
         this.movieService.getMovieDetails(this.id)
           .subscribe(m => {
             this.movie = m;
-            console.log(this.movie);
-
+            this.currentMoviePurchased = this.isCurrentMoviePurchased();
+            console.log(this.currentMoviePurchased, 'movie purchased');
           });
       }
     );
@@ -46,6 +47,24 @@ export class MovieDetailsComponent implements OnInit {
       this.router.navigateByUrl('/login');
     }
 
+  }
+
+  private isCurrentMoviePurchased(): boolean {
+
+    let ismoviePurchases = false;
+
+    if (this.movie) {
+      this.userDataService.purchasedMovies.subscribe(
+        pm => {
+
+          ismoviePurchases = (pm.purchasedMovies.some(p => p.id === this.movie.id));
+
+        }
+
+      );
+
+    }
+    return ismoviePurchases;
   }
 
 }
