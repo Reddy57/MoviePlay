@@ -31,6 +31,7 @@ import { HttpTokenInterceptor } from './core/interceptors/http-token.interceptor
 import { BuyButtonComponent } from './shared/components/buy-button/buy-button.component';
 import { FavoriteButtonComponent } from './shared/components/favorite-button/favorite-button.component';
 import { MovieCardListComponent } from './movies/movie-card-list/movie-card-list.component';
+import { MoviePurchaseConfirmComponent } from './movies/movie-purchase-confirm/movie-purchase-confirm.component';
 
 @NgModule({
   declarations: [
@@ -54,7 +55,8 @@ import { MovieCardListComponent } from './movies/movie-card-list/movie-card-list
     MovieListComponent,
     BuyButtonComponent,
     FavoriteButtonComponent,
-    MovieCardListComponent
+    MovieCardListComponent,
+    MoviePurchaseConfirmComponent
   ],
   imports: [
     BrowserModule,
@@ -68,6 +70,7 @@ import { MovieCardListComponent } from './movies/movie-card-list/movie-card-list
     NgbModalModule,
     NgbPaginationModule,
   ],
+  entryComponents: [MoviePurchaseConfirmComponent],
   providers: [
     { provide: HTTP_INTERCEPTORS, useClass: HttpTokenInterceptor, multi: true },
   ],

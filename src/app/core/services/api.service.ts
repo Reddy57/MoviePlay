@@ -55,6 +55,7 @@ export class ApiService {
       );
   }
   create(path: string, resource, options?): Observable<any> {
+    console.log('inside API Create');
     return this.http
       .post(`${environment.apiUrl}${path}`, resource, { headers: this.headers })
       .pipe(

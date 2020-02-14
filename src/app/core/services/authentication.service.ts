@@ -5,7 +5,7 @@ import { ApiService } from './api.service';
 import { JwtStorageService } from './jwt-storage.service';
 import { Login } from 'src/app/shared/models/login';
 import { map } from 'rxjs/operators';
-import { JwtHelperService } from "@auth0/angular-jwt";
+import { JwtHelperService } from '@auth0/angular-jwt';
 
 @Injectable({
   providedIn: 'root'

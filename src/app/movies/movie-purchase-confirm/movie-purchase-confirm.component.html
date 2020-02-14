@@ -1,0 +1,13 @@
+<div class="modal-body">
+  <p>Are you sure you wanna buy</p>
+  <h3 class="modal-title">{{movie.title}} which is {{movie.price | currency}} </h3>
+</div>
+
+<div class="modal-footer">
+  <button type="button"
+          class="btn btn-primary"
+          (click)="confirmPurchase()">YES</button>
+  <button type="button"
+          class="btn btn-outline-dark">NO</button>
+</div>
+`
