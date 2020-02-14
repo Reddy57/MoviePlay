@@ -23,7 +23,7 @@ export class AuthenticationService {
   constructor(private apiService: ApiService, private jwtStorageService: JwtStorageService) { }
 
   login(userLogin: Login): Observable<boolean> {
-    return this.apiService.create('/user/login', userLogin)
+    return this.apiService.create('/account/login', userLogin)
       .pipe(map(response => {
         if (response) {
           this.jwtStorageService.saveToken(response.token);
