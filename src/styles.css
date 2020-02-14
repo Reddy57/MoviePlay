@@ -15,10 +15,19 @@
   height: 450px;
 }
 
+.cast-small-img {
+  width: 34px;
+  height: 51px;
+}
+
 .list-group-item {
   background-color: transparent;
   border: 1px solid;
   border-left: 0;
   border-right: 0;
   border-top: 0;
+}
+
+.moviefacts {
+  background-color: #f8f9fa;
 }
