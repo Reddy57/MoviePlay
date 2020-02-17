@@ -32,7 +32,7 @@ export class MovieDetailsComponent implements OnInit {
         this.movieService.getMovieDetails(this.id)
           .subscribe(m => {
             this.movie = m;
-            this.currentMoviePurchased = this.isCurrentMoviePurchased();
+            this.isCurrentMoviePurchased();
             console.log(this.currentMoviePurchased, 'movie purchased');
           });
       }
@@ -49,22 +49,21 @@ export class MovieDetailsComponent implements OnInit {
 
   }
 
-  private isCurrentMoviePurchased(): boolean {
+  private isCurrentMoviePurchased(): void {
 
-    let ismoviePurchases = false;
+    this.currentMoviePurchased = false;
 
     if (this.movie) {
       this.userDataService.purchasedMovies.subscribe(
         pm => {
-
-          ismoviePurchases = (pm.purchasedMovies.some(p => p.id === this.movie.id));
+          console.log('inside purchased movies subscription of movie details');
+          this.currentMoviePurchased = (pm.purchasedMovies.some(p => p.id === this.movie.id));
 
         }
 
       );
 
     }
-    return ismoviePurchases;
   }
 
 }
