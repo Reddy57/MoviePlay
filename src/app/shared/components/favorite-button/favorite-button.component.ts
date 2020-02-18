@@ -1,8 +1,6 @@
-import { Component, OnInit, Input, Output, EventEmitter } from '@angular/core';
+import { Component, OnInit, Input, Output, EventEmitter, OnChanges } from '@angular/core';
 import { Router } from '@angular/router';
 import { UserService } from 'src/app/core/services/user.service';
-import { concatMap } from 'rxjs/operators';
-import { of } from 'rxjs';
 import { AuthenticationService } from 'src/app/core/services/authentication.service';
 import { Favorite } from '../../models/favorite';
 import { Movie } from '../../models/movie';
@@ -15,15 +13,24 @@ import { Movie } from '../../models/movie';
 export class FavoriteButtonComponent implements OnInit {
 
   @Input() isFavorited: boolean;
-  @Input() movie: Movie;
+  @Input() movieDetails: Movie;
   @Output() toggle = new EventEmitter<boolean>();
   favorite: Favorite;
 
   constructor(private router: Router, private userService: UserService, private authService: AuthenticationService) { }
 
   ngOnInit() {
+    console.log('Movie is Favorited in Fav Component');
+    console.log(this.isFavorited);
+    console.log(this.movieDetails);
 
   }
+
+  // ngOnChanges(): void {
+  //   console.log('Movie is Favorited in Fav Component');
+  //   console.log(this.isFavorited);
+  //   console.log(this.movie);
+  // }
 
   toggleFavorite() {
 
@@ -33,8 +40,8 @@ export class FavoriteButtonComponent implements OnInit {
         this.router.navigateByUrl('/login');
       }
       this.favorite = {
-        movieId: this.movie.id,
-        userId: this.authService.getCurrentUser().nameid
+        movieId: this.movieDetails.id,
+        userId: +this.authService.getCurrentUser().nameid
       };
       // If the Movie has not been already favorited
       if (!this.isFavorited) {

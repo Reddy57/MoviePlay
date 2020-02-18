@@ -6,6 +6,7 @@ import { AuthenticationService } from 'src/app/core/services/authentication.serv
 import { NgbModal } from '@ng-bootstrap/ng-bootstrap';
 import { MoviePurchaseConfirmComponent } from '../movie-purchase-confirm/movie-purchase-confirm.component';
 import { UserDataService } from 'src/app/core/services/user-data.service';
+import { UserService } from 'src/app/core/services/user.service';
 
 @Component({
   selector: 'app-movie-details',
@@ -17,26 +18,36 @@ export class MovieDetailsComponent implements OnInit {
   movie: Movie;
   id: number;
   isAuthenticated = false;
-  currentMoviePurchased: boolean;
+  currentMoviePurchased = false;
+  currentMovieFavorited = false;
   // tslint:disable-next-line: max-line-length
-  constructor(private movieService: MovieService, private route: ActivatedRoute, private authService: AuthenticationService, private router: Router, private modalService: NgbModal, private userDataService: UserDataService) { }
+  constructor(private movieService: MovieService, private userService: UserService, private route: ActivatedRoute, private authService: AuthenticationService,
+    private router: Router, private modalService: NgbModal, private userDataService: UserDataService) { }
 
   ngOnInit() {
     this.authService.isAuthenticated.subscribe(isAuthenticated => {
       this.isAuthenticated = isAuthenticated;
     });
+    // console.log('Movie is purchased', this.currentMoviePurchased);
 
     this.route.paramMap.subscribe(
       params => {
         this.id = +params.get('id');
-        this.movieService.getMovieDetails(this.id)
-          .subscribe(m => {
-            this.movie = m;
-            this.isCurrentMoviePurchased();
-            console.log(this.currentMoviePurchased, 'movie purchased');
-          });
+        this.getMovieDetails();
       }
     );
+  }
+
+  private getMovieDetails() {
+    this.movieService.getMovieDetails(this.id)
+      .subscribe(m => {
+        this.movie = m;
+        if (this.isAuthenticated) {
+          this.isCurrentMoviePurchased();
+          this.isMovieFavorited();
+        }
+
+      });
   }
 
   buyMovie(movie: Movie) {
@@ -51,8 +62,7 @@ export class MovieDetailsComponent implements OnInit {
 
 
   onToggleFavorite(favorited: boolean) {
-
-
+    this.isMovieFavorited();
   }
   private isCurrentMoviePurchased(): void {
 
@@ -69,6 +79,21 @@ export class MovieDetailsComponent implements OnInit {
       );
 
     }
+  }
+
+  private isMovieFavorited(): void {
+    this.currentMovieFavorited = false;
+    if (this.movie) {
+      this.userService.isMovieFavorited(this.authService.getCurrentUser().nameid, this.id).subscribe(
+        f => {
+          this.currentMovieFavorited = f.isFavorited;
+          console.log('Movie Details Fav Check');
+          console.log(this.currentMovieFavorited);
+        }
+      );
+
+    }
+
   }
 
 }

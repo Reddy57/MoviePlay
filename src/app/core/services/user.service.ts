@@ -26,7 +26,9 @@ export class UserService {
   unfavoriteMovie(favorite: Favorite) {
     return this.apiService.create('/user/unfavorite', favorite);
   }
-  isMovieFavorited(id: number, movieId: number) {
-    return this.apiService.getOne(`${'/user/'}${id} {/movie/}${movieId}${'/favorite'}`);
+  isMovieFavorited(userId: number, movieId: number): Observable<any> {
+    console.log(userId);
+    console.log(movieId);
+    return this.apiService.getOne(`${'/user/'}${userId}/movie/${movieId}${'/favorite'}`);
   }
 }

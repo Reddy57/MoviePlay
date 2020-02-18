@@ -62,7 +62,9 @@
     <div class="col-md-2 mt-4 offset-1">
       <ul class="list-group">
         <li class="list-group-item">
-          <app-favorite-button (toggle)="onToggleFavorite($event)">
+          <app-favorite-button (toggle)="onToggleFavorite($event)"
+                               [isFavorited]='currentMovieFavorited'
+                               [movieDetails]='movie'>
           </app-favorite-button>
 
         </li>
