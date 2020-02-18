@@ -4,6 +4,7 @@ import { UserService } from 'src/app/core/services/user.service';
 import { AuthenticationService } from 'src/app/core/services/authentication.service';
 import { Favorite } from '../../models/favorite';
 import { Movie } from '../../models/movie';
+import { ToastrService } from 'ngx-toastr';
 
 @Component({
   selector: 'app-favorite-button',
@@ -17,7 +18,8 @@ export class FavoriteButtonComponent implements OnInit {
   @Output() toggle = new EventEmitter<boolean>();
   favorite: Favorite;
 
-  constructor(private router: Router, private userService: UserService, private authService: AuthenticationService) { }
+  constructor(private toastr: ToastrService, private router: Router,
+    private userService: UserService, private authService: AuthenticationService) { }
 
   ngOnInit() {
     // console.log('Movie is Favorited in Fav Component');
@@ -47,11 +49,17 @@ export class FavoriteButtonComponent implements OnInit {
       if (!this.isFavorited) {
 
         this.userService.favoriteMovie(this.favorite).subscribe(
-          f => { this.toggle.emit(true); }
+          f => {
+            this.toastr.success('Movie added to Favorites');
+            this.toggle.emit(true);
+          }
         );
       } else {
         this.userService.unfavoriteMovie(this.favorite).subscribe(
-          f => { this.toggle.emit(false); }
+          f => {
+            this.toastr.warning('Movie removed from Favorites');
+            this.toggle.emit(false);
+          }
 
         );
       }

@@ -5,6 +5,7 @@ import { Purchase } from 'src/app/shared/models/purchase';
 import { AuthenticationService } from 'src/app/core/services/authentication.service';
 import { UserService } from 'src/app/core/services/user.service';
 import { UserDataService } from 'src/app/core/services/user-data.service';
+import { ToastrService } from 'ngx-toastr';
 
 @Component({
   selector: 'app-movie-purchase-confirm',
@@ -18,7 +19,7 @@ export class MoviePurchaseConfirmComponent implements OnInit {
   isAuthenticated: boolean;
 
   // tslint:disable-next-line: max-line-length
-  constructor(public activeModal: NgbActiveModal, private authService: AuthenticationService, private userService: UserService, private userDataService: UserDataService) { }
+  constructor(private toastr: ToastrService, public activeModal: NgbActiveModal, private authService: AuthenticationService, private userService: UserService, private userDataService: UserDataService) { }
 
   ngOnInit() {
     this.authService.isAuthenticated.subscribe(isAuthenticated => {
@@ -37,10 +38,13 @@ export class MoviePurchaseConfirmComponent implements OnInit {
     this.userService.purchaseMovie(this.purchase).subscribe(
       () => {
         this.userDataService.UpdateAndGetPurchasedMovies();
+        this.toastr.success('Movie Purchased');
         this.activeModal.close();
       },
       (err: any) => {
         console.log('error happened in purchasing the movie', err);
+        this.toastr.error('Something went wring in Movie Purchase');
+
       }
     );
   }

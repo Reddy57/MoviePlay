@@ -3,6 +3,7 @@ import { NgModule } from '@angular/core';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { HttpClientModule } from '@angular/common/http';
 import { HTTP_INTERCEPTORS } from '@angular/common/http';
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 
 
 import { NgbCarouselModule, NgbCollapseModule, NgbDropdownModule, NgbModalModule, NgbPaginationModule } from '@ng-bootstrap/ng-bootstrap';
@@ -31,6 +32,7 @@ import { HttpTokenInterceptor } from './core/interceptors/http-token.interceptor
 import { FavoriteButtonComponent } from './shared/components/favorite-button/favorite-button.component';
 import { MovieCardListComponent } from './movies/movie-card-list/movie-card-list.component';
 import { MoviePurchaseConfirmComponent } from './movies/movie-purchase-confirm/movie-purchase-confirm.component';
+import { ToastrModule } from 'ngx-toastr';
 
 @NgModule({
   declarations: [
@@ -61,6 +63,10 @@ import { MoviePurchaseConfirmComponent } from './movies/movie-purchase-confirm/m
     AppRoutingModule,
     FormsModule,
     ReactiveFormsModule,
+    BrowserAnimationsModule,
+    ToastrModule.forRoot({
+      positionClass: 'toast-bottom-right',
+    }),
     HttpClientModule,
     NgbCarouselModule,
     NgbCollapseModule,
