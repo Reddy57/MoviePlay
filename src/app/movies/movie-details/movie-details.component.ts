@@ -71,7 +71,7 @@ export class MovieDetailsComponent implements OnInit {
     if (this.movie) {
       this.userDataService.purchasedMovies.subscribe(
         pm => {
-          console.log('inside purchased movies subscription of movie details');
+          // console.log('inside purchased movies subscription of movie details');
           this.currentMoviePurchased = (pm.purchasedMovies.some(p => p.id === this.movie.id));
 
         }
@@ -87,8 +87,6 @@ export class MovieDetailsComponent implements OnInit {
       this.userService.isMovieFavorited(this.authService.getCurrentUser().nameid, this.id).subscribe(
         f => {
           this.currentMovieFavorited = f.isFavorited;
-          console.log('Movie Details Fav Check');
-          console.log(this.currentMovieFavorited);
         }
       );
 

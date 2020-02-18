@@ -23,7 +23,7 @@ export class HeaderComponent implements OnInit {
       this.isAuthenticated = isAuthenticated;
       if (this.isAuthenticated) {
         this.userDataService.UpdateAndGetPurchasedMovies();
-        console.log('inside header', isAuthenticated);
+        // console.log('inside header', isAuthenticated);
 
       }
     });

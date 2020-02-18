@@ -31,7 +31,7 @@ export class UserDataService {
 
   UpdateAndGetPurchasedMovies() {
 
-    console.log('inside purchased subject');
+    // console.log('inside purchased subject');
 
     this.userService
       .getPurchasedMovies(this.curentUser.nameid)

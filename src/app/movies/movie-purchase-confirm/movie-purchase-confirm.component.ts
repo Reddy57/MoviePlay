@@ -31,7 +31,7 @@ export class MoviePurchaseConfirmComponent implements OnInit {
       movieId: this.movie.id,
       userId: +this.authService.getCurrentUser().nameid
     };
-    console.log(this.purchase);
+    // console.log(this.purchase);
     // call api to purchase movie
 
     this.userService.purchaseMovie(this.purchase).subscribe(

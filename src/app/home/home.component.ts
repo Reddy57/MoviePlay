@@ -21,11 +21,9 @@ export class HomeComponent implements OnInit {
 
   }
   movieFavorited(movie: Movie) {
-    console.log('favorite clicked');
   }
 
   buyMovie(movie: Movie) {
-    console.log('buy clicked');
   }
 
 }

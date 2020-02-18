@@ -21,7 +21,6 @@ export class MovieCardListComponent implements OnInit {
         this.genreId = +params.get('id');
         this.movieService.getMoviesByGenre(this.genreId)
           .subscribe(g => {
-            console.log('Inside topgenres Filter');
             this.movies = g;
           });
       }

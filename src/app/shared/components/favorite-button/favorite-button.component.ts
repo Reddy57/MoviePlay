@@ -20,9 +20,9 @@ export class FavoriteButtonComponent implements OnInit {
   constructor(private router: Router, private userService: UserService, private authService: AuthenticationService) { }
 
   ngOnInit() {
-    console.log('Movie is Favorited in Fav Component');
-    console.log(this.isFavorited);
-    console.log(this.movieDetails);
+    // console.log('Movie is Favorited in Fav Component');
+    // console.log(this.isFavorited);
+    // console.log(this.movieDetails);
 
   }
 

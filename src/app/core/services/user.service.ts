@@ -13,7 +13,6 @@ export class UserService {
   constructor(private apiService: ApiService) { }
 
   purchaseMovie(purchase: Purchase) {
-    console.log('inside User Service');
     return this.apiService.create('/user/purchase', purchase);
   }
 
@@ -27,8 +26,6 @@ export class UserService {
     return this.apiService.create('/user/unfavorite', favorite);
   }
   isMovieFavorited(userId: number, movieId: number): Observable<any> {
-    console.log(userId);
-    console.log(movieId);
     return this.apiService.getOne(`${'/user/'}${userId}/movie/${movieId}${'/favorite'}`);
   }
 }
