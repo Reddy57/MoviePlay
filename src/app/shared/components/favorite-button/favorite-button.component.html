@@ -1,1 +1,15 @@
-<p>favorite-button works!</p>
+<!-- <span class="fa-stack text-light">
+  <i class="far fa-circle fa-stack-2x"></i>
+  <i class="far fa-heart fa-stack-1x fa-inverse"
+     style="cursor:pointer;"></i>
+</span> -->
+
+
+<button class="btn btn-sm"
+        [ngClass]="{
+              'btn-outline-light': !isFavorited,
+              'btn-light': isFavorited }"
+        (click)="toggleFavorite()">
+  <i class="far fa-heart"></i>
+  <ng-content></ng-content>
+</button>

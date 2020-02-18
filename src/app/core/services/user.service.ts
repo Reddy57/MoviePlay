@@ -3,6 +3,7 @@ import { ApiService } from './api.service';
 import { Purchase } from 'src/app/shared/models/purchase';
 import { Observable } from 'rxjs';
 import { Purchases } from 'src/app/shared/models/purchases';
+import { Favorite } from 'src/app/shared/models/favorite';
 
 @Injectable({
   providedIn: 'root'
@@ -18,5 +19,14 @@ export class UserService {
 
   getPurchasedMovies(id: number): Observable<Purchases> {
     return this.apiService.getOne(`${'/user/'}${id}${'/purchases'}`);
+  }
+  favoriteMovie(favorite: Favorite) {
+    return this.apiService.create('/user/favorite', favorite);
+  }
+  unfavoriteMovie(favorite: Favorite) {
+    return this.apiService.create('/user/unfavorite', favorite);
+  }
+  isMovieFavorited(id: number, movieId: number) {
+    return this.apiService.getOne(`${'/user/'}${id} {/movie/}${movieId}${'/favorite'}`);
   }
 }

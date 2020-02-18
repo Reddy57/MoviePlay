@@ -17,6 +17,7 @@ export interface Movie {
   releaseDate: Date;
   runTime: number;
   price: number;
+  favoritesCount: number;
   casts: Cast[];
   genres: Genre[];
 

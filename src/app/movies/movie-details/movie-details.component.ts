@@ -49,6 +49,11 @@ export class MovieDetailsComponent implements OnInit {
 
   }
 
+
+  onToggleFavorite(favorited: boolean) {
+
+
+  }
   private isCurrentMoviePurchased(): void {
 
     this.currentMoviePurchased = false;
