@@ -22,6 +22,7 @@ export class MovieDetailsComponent implements OnInit {
   currentMovieFavorited = false;
   // tslint:disable-next-line: max-line-length
   constructor(private movieService: MovieService, private userService: UserService, private route: ActivatedRoute, private authService: AuthenticationService,
+    // tslint:disable-next-line: align
     private router: Router, private modalService: NgbModal, private userDataService: UserDataService) { }
 
   ngOnInit() {

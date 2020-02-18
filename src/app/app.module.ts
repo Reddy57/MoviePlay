@@ -32,7 +32,6 @@ import { HttpTokenInterceptor } from './core/interceptors/http-token.interceptor
 import { FavoriteButtonComponent } from './shared/components/favorite-button/favorite-button.component';
 import { MovieCardListComponent } from './movies/movie-card-list/movie-card-list.component';
 import { MoviePurchaseConfirmComponent } from './movies/movie-purchase-confirm/movie-purchase-confirm.component';
-import { ToastrModule } from 'ngx-toastr';
 
 @NgModule({
   declarations: [
@@ -64,9 +63,9 @@ import { ToastrModule } from 'ngx-toastr';
     FormsModule,
     ReactiveFormsModule,
     BrowserAnimationsModule,
-    ToastrModule.forRoot({
-      positionClass: 'toast-bottom-right',
-    }),
+    // ToastrModule.forRoot({
+    //   positionClass: 'toast-bottom-right',
+    // }),
     HttpClientModule,
     NgbCarouselModule,
     NgbCollapseModule,

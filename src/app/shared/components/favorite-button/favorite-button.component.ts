@@ -4,7 +4,6 @@ import { UserService } from 'src/app/core/services/user.service';
 import { AuthenticationService } from 'src/app/core/services/authentication.service';
 import { Favorite } from '../../models/favorite';
 import { Movie } from '../../models/movie';
-import { ToastrService } from 'ngx-toastr';
 
 @Component({
   selector: 'app-favorite-button',
@@ -18,7 +17,8 @@ export class FavoriteButtonComponent implements OnInit {
   @Output() toggle = new EventEmitter<boolean>();
   favorite: Favorite;
 
-  constructor(private toastr: ToastrService, private router: Router,
+  constructor(private router: Router,
+    // tslint:disable-next-line: align
     private userService: UserService, private authService: AuthenticationService) { }
 
   ngOnInit() {
@@ -50,14 +50,14 @@ export class FavoriteButtonComponent implements OnInit {
 
         this.userService.favoriteMovie(this.favorite).subscribe(
           f => {
-            this.toastr.success('Movie added to Favorites');
+            // this.toastr.success('Movie added to Favorites');
             this.toggle.emit(true);
           }
         );
       } else {
         this.userService.unfavoriteMovie(this.favorite).subscribe(
           f => {
-            this.toastr.warning('Movie removed from Favorites');
+            // this.toastr.warning('Movie removed from Favorites');
             this.toggle.emit(false);
           }
 
