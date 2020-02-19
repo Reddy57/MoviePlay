@@ -4,6 +4,7 @@ import { Purchase } from 'src/app/shared/models/purchase';
 import { Observable } from 'rxjs';
 import { Purchases } from 'src/app/shared/models/purchases';
 import { Favorite } from 'src/app/shared/models/favorite';
+import { map, tap } from 'rxjs/operators';
 
 @Injectable({
   providedIn: 'root'
@@ -27,5 +28,12 @@ export class UserService {
   }
   isMovieFavorited(userId: number, movieId: number): Observable<any> {
     return this.apiService.getOne(`${'/user/'}${userId}/movie/${movieId}${'/favorite'}`);
+  }
+
+  isEmailExists(email: string): Observable<boolean> {
+    let myMap = new Map();
+    myMap.set('email', email);
+    return this.apiService.getOne('/account', null, myMap).pipe(map(val => val.emailExists));
+
   }
 }

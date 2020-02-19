@@ -22,14 +22,22 @@ export class ApiService {
       catchError(this.handleError)
     );
   }
-  getOne(path: string, id?: number): Observable<any> {
+  getOne(path: string, id?: number, queryParams?: Map<any, any>): Observable<any> {
     let getUrl: string;
     if (id) {
       getUrl = `${environment.apiUrl}${path}` + '/' + id;
     } else {
       getUrl = `${environment.apiUrl}${path}`;
     }
-    return this.http.get(getUrl).pipe(
+
+    let params = new HttpParams();
+    if (queryParams) {
+      queryParams.forEach((value: string, key: string) => {
+        params = params.append(key, value);
+      });
+    }
+
+    return this.http.get(getUrl, { params }).pipe(
       map(resp => resp as any),
       catchError(this.handleError)
     );
@@ -37,11 +45,11 @@ export class ApiService {
 
   getPagedResults(
     path: string,
-    searchParams?: Map<any, any>
+    queryParams?: Map<any, any>
   ): Observable<PagedResults<any>> {
     let params = new HttpParams();
-    if (searchParams) {
-      searchParams.forEach((value: string, key: string) => {
+    if (queryParams) {
+      queryParams.forEach((value: string, key: string) => {
         params = params.append(key, value);
       });
     }

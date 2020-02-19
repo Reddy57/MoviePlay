@@ -22,6 +22,7 @@
             <div *ngIf="submitted && f.title.errors"
                  class="invalid-feedback">
               <div *ngIf="f.title.errors?.required">Title is required</div>
+              <div *ngIf="f.title.errors?.maxlength">Title maximum length is 64</div>
             </div>
 
           </div>
@@ -33,13 +34,33 @@
                    type="text">
           </div>
         </div>
+        <div class="row">
+          <div class="col-md-6 mb-3">
+            <label for="email">Email</label>
+            <input class="form-control"
+                   formControlName="email"
+                   id="email"
+                   type="text"
+                   [ngClass]="{ 'is-invalid': submitted && f.email.errors }">
+            <div *ngIf="submitted && f.email.errors"
+                 class="invalid-feedback">
+              <div *ngIf="f.email.errors?.required">Email is required</div>
+              <div *ngIf="f.email.errors?.email">Email must be a valid email address</div>
+              <div *ngIf="f.email.errors?.uniqueEmail">Email is taken!</div>
+            </div>
+
+          </div>
+        </div>
         <div class="mb-3">
-          <label for="overview">Overview <span class="text-muted">(Optional)</span></label>
-          <textarea formControlName="overview"
+          <label for="overview">Overview</label>
+          <textarea class="form-control"
+                    formControlName="overview"
                     rows="3"
-                    class="form-control"
                     id="overview"> </textarea>
-          <div class="invalid-feedback">
+          <div *ngIf="submitted && f.overview.errors"
+               class="invalid-feedback">
+            <div *ngIf="f.overview.errors?.required">Overview is required</div>
+            <div *ngIf="f.overview.errors?.maxlength">Overview maximum length is 8192</div>
           </div>
         </div>
         <div class="row">

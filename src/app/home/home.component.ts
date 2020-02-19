@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { MovieService } from '../core/services/movie.service';
 import { Movie } from '../shared/models/movie';
+import { UserService } from '../core/services/user.service';
 
 @Component({
   selector: 'app-home',
@@ -10,12 +11,16 @@ import { Movie } from '../shared/models/movie';
 export class HomeComponent implements OnInit {
   movies: Movie[];
 
-  constructor(private movieService: MovieService) { }
+  constructor(private movieService: MovieService, private userService: UserService) { }
 
   ngOnInit() {
     this.movieService.getTopRatedMovies().subscribe(m => {
       this.movies = m;
     });
+
+    this.userService.isEmailExists('VerlA.Yosst@gmail.com').subscribe(
+      x => { console.log(x); }
+    )
   }
   private getMovies() {
 
