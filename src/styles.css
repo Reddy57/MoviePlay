@@ -32,3 +32,9 @@
 .moviefacts {
   background-color: #f8f9fa;
 }
+
+.btn.focus,
+.btn:focus {
+  -webkit-box-shadow: none !important;
+  box-shadow: none !important;
+}

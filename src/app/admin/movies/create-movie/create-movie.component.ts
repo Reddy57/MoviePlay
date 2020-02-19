@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { FormGroup, FormBuilder, Validators } from '@angular/forms';
 
 @Component({
   selector: 'app-create-movie',
@@ -7,9 +8,47 @@ import { Component, OnInit } from '@angular/core';
 })
 export class CreateMovieComponent implements OnInit {
 
-  constructor() { }
+  createMovieForm: FormGroup;
+  submitted = false;
+
+  constructor(private fb: FormBuilder) { }
+
+  // convenience getter for easy access to form fields
+  get f() { return this.createMovieForm.controls; }
 
   ngOnInit() {
+
+    this.buildForm();
+  }
+  buildForm() {
+    this.createMovieForm = this.fb.group({
+      title: ['', [Validators.required, Validators.maxLength(150)]],
+      tagline: ['', Validators.maxLength(2084)],
+      overview: ['', Validators.required],
+      budget: ['', [Validators.max(500000000), Validators.min(20000)]],
+      revenue: ['', [Validators.max(5000000000), Validators.min(20)]],
+      imdbUrl: ['', Validators.pattern('(https?://)?([\\da-z.-]+)\\.([a-z.]{2,6})[/\\w .-]*/?')],
+      tmdbUrl: ['', Validators.pattern('(https?://)?([\\da-z.-]+)\\.([a-z.]{2,6})[/\\w .-]*/?')],
+      posterUrl: ['', Validators.pattern('(https?://)?([\\da-z.-]+)\\.([a-z.]{2,6})[/\\w .-]*/?')],
+      backdropUrl: ['', Validators.pattern('(https?://)?([\\da-z.-]+)\\.([a-z.]{2,6})[/\\w .-]*/?')],
+      originalLanguage: ['', Validators.maxLength(64)],
+      releaseDate: ['', []],
+      runTime: ['', [Validators.max(360), Validators.min(10)]],
+      price: ['', [Validators.max(100), Validators.min(1)]],
+
+    });
+  }
+
+  onSubmit() {
+    console.log('submit clicked');
+    console.log(this.createMovieForm.value);
+
+    this.submitted = true;
+    // stop here if form is invalid
+    if (this.createMovieForm.invalid) {
+      return;
+    }
+
   }
 
 }
