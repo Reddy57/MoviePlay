@@ -40,9 +40,9 @@ export class SignUpComponent implements OnInit {
       firstName: ['', Validators.required],
       lastName: ['', Validators.required],
       email: [null, { validators: [Validators.required, Validators.email], asyncValidators: [this.validatorService.emailExistsValidator()], updateOn: 'blur' }],
-      password: ['', [Validators.required, Validators.minLength(6)]],
-      confirmPassword: ['', [Validators.required, Validators.minLength(6)]]
-    });
+      password: ['', [Validators.required, this.validatorService.passwordValidator]],
+      confirmPassword: ['', [Validators.required]]
+    }, { validators: this.validatorService.passwordMatch });
 
 
   }
@@ -56,8 +56,8 @@ export class SignUpComponent implements OnInit {
   }
 
   onSubmit() {
-    console.log('submit clicked');
-    console.log(this.signupForm.value);
+    // console.log('submit clicked');
+    console.log(this.signupForm);
 
     this.submitted = true;
     // stop here if form is invalid
