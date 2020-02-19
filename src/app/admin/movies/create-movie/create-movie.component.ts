@@ -41,7 +41,7 @@ export class CreateMovieComponent implements OnInit {
 
   onSubmit() {
     console.log('submit clicked');
-    console.log(this.createMovieForm.value);
+    console.log(this.createMovieForm.controls);
 
     this.submitted = true;
     // stop here if form is invalid

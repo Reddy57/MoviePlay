@@ -128,6 +128,64 @@
 
           </div>
         </div>
+
+        <div class="row">
+          <div class="col-md-3 mb-3">
+            <label for="releaseDate">Release Date</label>
+            <input class="form-control"
+                   formControlName="releaseDate"
+                   id="releaseDate"
+                   type="date"
+                   [ngClass]="{ 'is-invalid': submitted && f.releaseDate.errors }">
+            <div *ngIf="submitted && f.releaseDate.errors"
+                 class="invalid-feedback">
+              Date Wrong Format
+              <!-- <div *ngIf="f.releaseDate.errors?.pattern">Poster URL wrong format</div> -->
+            </div>
+
+          </div>
+          <div class="col-md-3 mb-3">
+            <label for="originalLanguage">Language</label>
+            <input class="form-control"
+                   formControlName="originalLanguage"
+                   id="originalLanguage"
+                   type="text"
+                   [ngClass]="{ 'is-invalid': submitted && f.originalLanguage.errors }">
+            <div *ngIf="submitted && f.originalLanguage.errors"
+                 class="invalid-feedback">
+            </div>
+
+          </div>
+          <div class="col-md-3 mb-3">
+            <label for="runTime">Run Time</label>
+            <input class="form-control"
+                   formControlName="runTime"
+                   id="runTime"
+                   type="number"
+                   [ngClass]="{ 'is-invalid': submitted && f.runTime.errors }">
+            <div *ngIf="submitted && f.runTime.errors"
+                 class="invalid-feedback">
+              <div *ngIf="f.runTime.errors?.min">Run Time should be minimum 10 minutes</div>
+              <div *ngIf="f.runTime.errors?.max">Run Time cannot exceed 360 minutes</div>
+            </div>
+
+          </div>
+          <div class="col-md-3 mb-3">
+            <label for="price">Price</label>
+            <input class="form-control"
+                   formControlName="price"
+                   id="price"
+                   type="number"
+                   [ngClass]="{ 'is-invalid': submitted && f.price.errors }">
+            <div *ngIf="submitted && f.price.errors"
+                 class="invalid-feedback">
+              <div *ngIf="f.price.errors?.min">Price cannor be less than $1</div>
+              <div *ngIf="f.price.errors?.max">Price cannot be more than $100</div>
+            </div>
+
+          </div>
+        </div>
+
         <hr class="mb-4">
 
         <input type="submit"
