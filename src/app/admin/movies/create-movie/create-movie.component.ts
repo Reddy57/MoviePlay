@@ -35,8 +35,7 @@ export class CreateMovieComponent implements OnInit {
       originalLanguage: ['', Validators.maxLength(64)],
       releaseDate: ['', []],
       runTime: ['', [Validators.max(360), Validators.min(10)]],
-      price: ['', [Validators.max(100), Validators.min(1)]],
-      email: [null, { validators: [Validators.required, Validators.email], asyncValidators: [this.validatorService.emailExistsValidator()], updateOn: 'blur' }]
+      price: ['', [Validators.max(100), Validators.min(1)]]
 
     });
   }

@@ -13,15 +13,11 @@ export class ValidatorService {
 
   }
 
-  // checkIfEmailExists(email:string): Observable<boolean> {
-  //   return of(this.emailExistsValidator(email))
-
-  // }
   emailExistsValidator(): AsyncValidatorFn {
 
     return (control: AbstractControl): Observable<ValidationErrors | null> => {
-      console.log('inside validator');
-      console.log(control);
+      // console.log('inside validator');
+      // console.log(control);
       return this.userService.isEmailExists(control.value).pipe(
         map(emailTaken => (emailTaken ? { uniqueEmail: true } : null))
       );

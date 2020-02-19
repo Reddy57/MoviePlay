@@ -47,6 +47,7 @@
                      class="invalid-feedback">
                   <div *ngIf="f.email.errors?.required">Email is required</div>
                   <div *ngIf="f.email.errors?.email">Email must be a valid email address</div>
+                  <div *ngIf="f.email.errors?.uniqueEmail">Email is taken!</div>
                 </div>
 
               </div>
@@ -96,11 +97,4 @@
       <!-- /form user info -->
     </div>
   </div>
-</div>
-
-
-
-
-<div>
-  {{f}}
 </div>

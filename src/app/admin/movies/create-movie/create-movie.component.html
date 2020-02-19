@@ -34,23 +34,6 @@
                    type="text">
           </div>
         </div>
-        <div class="row">
-          <div class="col-md-6 mb-3">
-            <label for="email">Email</label>
-            <input class="form-control"
-                   formControlName="email"
-                   id="email"
-                   type="text"
-                   [ngClass]="{ 'is-invalid': submitted && f.email.errors }">
-            <div *ngIf="submitted && f.email.errors"
-                 class="invalid-feedback">
-              <div *ngIf="f.email.errors?.required">Email is required</div>
-              <div *ngIf="f.email.errors?.email">Email must be a valid email address</div>
-              <div *ngIf="f.email.errors?.uniqueEmail">Email is taken!</div>
-            </div>
-
-          </div>
-        </div>
         <div class="mb-3">
           <label for="overview">Overview</label>
           <textarea class="form-control"
