@@ -1,6 +1,8 @@
 import { Component, OnInit } from '@angular/core';
-import { FormGroup, FormBuilder, Validators } from '@angular/forms';
-import { ValidatorService } from 'src/app/core/services/validator.service';
+import { FormGroup, FormBuilder, Validators, FormArray, FormControl } from '@angular/forms';
+import { GenreService } from 'src/app/core/services/genre.service';
+import { Genre } from 'src/app/shared/models/genre';
+import { Movie } from 'src/app/shared/models/movie';
 
 @Component({
   selector: 'app-create-movie',
@@ -11,15 +13,27 @@ export class CreateMovieComponent implements OnInit {
 
   createMovieForm: FormGroup;
   submitted = false;
+  movie = <Movie>{};
 
-  constructor(private fb: FormBuilder, private validatorService: ValidatorService) { }
+  constructor(private fb: FormBuilder, private genreService: GenreService) {
+    this.buildForm();
+
+  }
 
   // convenience getter for easy access to form fields
   get f() { return this.createMovieForm.controls; }
 
   ngOnInit() {
+    this.genreService.getAllGenres().subscribe(
+      g => {
+        this.movie.genres = Object.assign([], g);
+        // console.log('inside innit');
+        // console.log(this.movie.genres)
+        this.patchFormWithGenres();
 
-    this.buildForm();
+      }
+    );
+
   }
   buildForm() {
     this.createMovieForm = this.fb.group({
@@ -35,15 +49,32 @@ export class CreateMovieComponent implements OnInit {
       originalLanguage: ['', Validators.maxLength(64)],
       releaseDate: ['', []],
       runTime: ['', [Validators.max(360), Validators.min(10)]],
-      price: ['', [Validators.max(100), Validators.min(1)]]
+      price: ['', [Validators.max(100), Validators.min(1)]],
+      genres: new FormArray([])
 
     });
   }
 
+  patchFormWithGenres() {
+    // this.createMovieForm.patchValue({});
+    // this.buildGenres();
+
+    this.movie.genres.forEach((o, i) => {
+      const control = new FormControl();
+      (this.createMovieForm.controls.genres as FormArray).push(control);
+    });
+
+  }
+
   onSubmit() {
-    console.log('submit clicked');
-    console.log(this.createMovieForm.controls);
+    // console.log('submit clicked');
+    // console.log(this.createMovieForm.controls);
     console.log(this.createMovieForm);
+    console.log(this.createMovieForm.value.genres);
+    console.log(this.movie.genres);
+    var selectedGenres = this.createMovieForm.value.genres.map((v: any, i: string | number) => (v ? this.movie.genres[i].id : null))
+      .filter((v: any) => v !== null);
+    console.log(selectedGenres);
     this.submitted = true;
     // stop here if form is invalid
     if (this.createMovieForm.invalid) {

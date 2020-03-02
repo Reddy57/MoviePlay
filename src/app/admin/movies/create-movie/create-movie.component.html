@@ -133,7 +133,7 @@
           </div>
         </div>
 
-        <div class="row">
+        <div class="row mb-3">
           <div class="col-md-3 mb-3">
             <label for="releaseDate">Release Date</label>
             <input class="form-control"
@@ -188,6 +188,22 @@
             </div>
 
           </div>
+        </div>
+        <h5 class="mb-2">Genres</h5>
+        <div class="row ml-2">
+          <!-- <h5 class="mb-3">Genres</h5> -->
+          <div class="form-check col-md-4"
+               formArrayName="genres"
+               *ngFor="let genre of createMovieForm.controls.genres.controls; let i = index">
+            <input class="form-check-input"
+                   type="checkbox"
+                   id="inlineCheckbox1"
+                   [value]='movie.genres[i]?.id'
+                   [formControlName]="i">
+            <label class="form-check-label"
+                   for="inlineCheckbox1">{{movie.genres[i]?.name}}</label>
+          </div>
+
         </div>
 
         <hr class="mb-4">
