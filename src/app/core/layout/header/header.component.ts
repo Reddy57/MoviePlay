@@ -22,6 +22,7 @@ export class HeaderComponent implements OnInit {
     this.authService.isAuthenticated.subscribe(isAuthenticated => {
       this.isAuthenticated = isAuthenticated;
       if (this.isAuthenticated) {
+        this.currentUser = this.userDataService.curentUser
         this.userDataService.UpdateAndGetPurchasedMovies();
         // console.log('inside header', isAuthenticated);
 

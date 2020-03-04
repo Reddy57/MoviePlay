@@ -40,28 +40,28 @@
           </div>
         </div>
       </li>
-      <li class="nav-item">
+      <li class="nav-item"
+          *ngIf="!isAuthenticated">
         <a class="btn btn-outline-primary rounded-pill"
-           *ngIf="!(authService.isAuthenticated | async)"
            [routerLink]="['/login']">Login</a>
       </li>
-      <li class="nav-item">
+      <li class="nav-item"
+          *ngIf="!isAuthenticated">
         <a href="#"
-           class="btn btn-primary rounded-pill"
-           *ngIf="!(authService.isAuthenticated | async)">
+           class="btn btn-primary rounded-pill">
           SignUp
         </a>
       </li>
       <li ngbDropdown
-          class="nav-item dropdown text-capitalize mr-5 mr-5 pl-5"
-          *ngIf="authService.isAuthenticated | async">
+          class="nav-item dropdown text-capitalize"
+          *ngIf="isAuthenticated">
         <a ngbDropdownToggle
            class="nav-link dropdown-toggle"
            id="dropdown01"
            data-toggle="dropdown"
            style="cursor:pointer;"
            aria-haspopup="true"
-           aria-expanded="false">{{ (authService.currentUser | async ).given_name }}</a>
+           aria-expanded="false">{{ currentUser.given_name + ' '+ currentUser.family_name }}</a>
         <div ngbDropdownMenu
              class="dropdown-menu"
              aria-labelledby="dropdown01">
