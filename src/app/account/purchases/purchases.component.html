@@ -1,1 +1,16 @@
-<p>purchases works!</p>
+<h3>
+  Purchased Movies
+</h3>
+
+
+<div class="rounded">
+    <div class="container-fluid bg-light">
+      <div class="row">
+        <div class="col-6 col-lg-3 col-sm-4 col-xl-2"
+             *ngFor="let movie of movies">
+          <app-movie-card [movie]='movie'>
+          </app-movie-card>
+        </div>
+      </div>
+    </div>
+  </div>

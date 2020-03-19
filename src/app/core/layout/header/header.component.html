@@ -1,27 +1,17 @@
 <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
-  <a class="navbar-brand"
-     href="#">Movie Play</a>
-  <button class="navbar-toggler"
-          type="button"
-          data-toggle="collapse"
-          data-target="#navbarSupportedContent"
-          aria-controls="navbarSupportedContent"
-          aria-expanded="false"
-          aria-label="Toggle navigation">
+  <a class="navbar-brand" href="#">Movie Play</a>
+  <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent"
+    aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
     <span class="navbar-toggler-icon"></span>
   </button>
 
-  <div class="collapse navbar-collapse"
-       id="navbarSupportedContent">
+  <div class="collapse navbar-collapse" id="navbarSupportedContent">
     <ul class="navbar-nav mr-auto text-uppercase">
 
       <li class="nav-item">
         <div ngbDropdown>
-          <a class="nav-link"
-             style="cursor:pointer;"
-             ngbDropdownToggle>Movies</a>
-          <div ngbDropdownMenu
-               aria-labelledby="dropdownManual">
+          <a class="nav-link" style="cursor:pointer;" ngbDropdownToggle>Movies</a>
+          <div ngbDropdownMenu aria-labelledby="dropdownManual">
             <ul class="list-unstyled text-center ">
               <li> <a [routerLink]="[ '/movies/toprated']">Top Rated</a> </li>
               <li> <a [routerLink]="[ '/movies/topgrossing']">Top Grossing</a> </li>
@@ -31,55 +21,34 @@
 
       <li class="nav-item">
         <div ngbDropdown>
-          <a class="nav-link"
-             style="cursor:pointer;"
-             ngbDropdownToggle>Genres</a>
-          <div ngbDropdownMenu
-               aria-labelledby="dropdownManual">
+          <a class="nav-link" style="cursor:pointer;" ngbDropdownToggle>Genres</a>
+          <div ngbDropdownMenu aria-labelledby="dropdownManual">
             <app-genres></app-genres>
           </div>
         </div>
       </li>
-      <li class="nav-item"
-          *ngIf="!isAuthenticated">
-        <a class="btn btn-outline-primary rounded-pill"
-           [routerLink]="['/login']">Login</a>
+      <li class="nav-item" *ngIf="!isAuthenticated">
+        <a class="btn btn-outline-primary rounded-pill" [routerLink]="['/login']">Login</a>
       </li>
-      <li class="nav-item"
-          *ngIf="!isAuthenticated">
-        <a href="#"
-           class="btn btn-primary rounded-pill">
+      <li class="nav-item" *ngIf="!isAuthenticated">
+        <a href="#" class="btn btn-primary rounded-pill">
           SignUp
         </a>
       </li>
-      <li ngbDropdown
-          class="nav-item dropdown text-capitalize"
-          *ngIf="isAuthenticated">
-        <a ngbDropdownToggle
-           class="nav-link dropdown-toggle"
-           id="dropdown01"
-           data-toggle="dropdown"
-           style="cursor:pointer;"
-           aria-haspopup="true"
-           aria-expanded="false">{{ currentUser.given_name + ' '+ currentUser.family_name }}</a>
-        <div ngbDropdownMenu
-             class="dropdown-menu"
-             aria-labelledby="dropdown01">
-          <a class="dropdown-item"
-             [routerLink]="['/']"
-             (click)="logout()">Log Out</a>
-          <a [routerLink]="[ '/account']"
-             class="dropdown-item">My Account</a>
+      <li ngbDropdown class="nav-item dropdown text-capitalize" *ngIf="isAuthenticated">
+        <a ngbDropdownToggle class="nav-link dropdown-toggle" id="dropdown01" data-toggle="dropdown"
+          style="cursor:pointer;" aria-haspopup="true"
+          aria-expanded="false">{{ currentUser.given_name + ' '+ currentUser.family_name }}</a>
+        <div ngbDropdownMenu class="dropdown-menu" aria-labelledby="dropdown01">
+          <a class="dropdown-item" [routerLink]="['purchases']">Library ({{myMoviesCount}})</a>
+          <a class="dropdown-item" [routerLink]="['/']" (click)="logout()">Log Out</a>
+          <a [routerLink]="[ '/account']" class="dropdown-item">My Account</a>
         </div>
       </li>
     </ul>
     <form class="form-inline my-2 my-lg-0">
-      <input class="form-control mr-sm-2"
-             type="search"
-             placeholder="Search Movies"
-             aria-label="Search">
-      <button class="btn btn-outline-light my-2 my-sm-0"
-              type="submit">Search</button>
+      <input class="form-control mr-sm-2" type="search" placeholder="Search Movies" aria-label="Search">
+      <button class="btn btn-outline-light my-2 my-sm-0" type="submit">Search</button>
     </form>
   </div>
 </nav>

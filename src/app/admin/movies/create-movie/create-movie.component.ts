@@ -13,7 +13,7 @@ export class CreateMovieComponent implements OnInit {
 
   createMovieForm: FormGroup;
   submitted = false;
-  movie = <Movie>{};
+  movie = {} as Movie;
 
   constructor(private fb: FormBuilder, private genreService: GenreService) {
     this.buildForm();
@@ -72,7 +72,7 @@ export class CreateMovieComponent implements OnInit {
     console.log(this.createMovieForm);
     console.log(this.createMovieForm.value.genres);
     console.log(this.movie.genres);
-    var selectedGenres = this.createMovieForm.value.genres.map((v: any, i: string | number) => (v ? this.movie.genres[i].id : null))
+    const selectedGenres = this.createMovieForm.value.genres.map((v: any, i: string | number) => (v ? this.movie.genres[i].id : null))
       .filter((v: any) => v !== null);
     console.log(selectedGenres);
     this.submitted = true;

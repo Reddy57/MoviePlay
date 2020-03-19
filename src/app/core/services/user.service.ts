@@ -31,7 +31,7 @@ export class UserService {
   }
 
   isEmailExists(email: string): Observable<boolean> {
-    let myMap = new Map();
+    const myMap = new Map();
     myMap.set('email', email);
     return this.apiService.getOne('/account', null, myMap).pipe(map(val => val.emailExists));
 

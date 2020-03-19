@@ -3,6 +3,7 @@ import { AuthenticationService } from '../../services/authentication.service';
 import { Router } from '@angular/router';
 import { User } from 'src/app/shared/models/user';
 import { UserDataService } from '../../services/user-data.service';
+import { Subscription } from 'rxjs';
 
 @Component({
   selector: 'app-header',
@@ -15,6 +16,7 @@ export class HeaderComponent implements OnInit {
   myMoviesCount: number;
   currentUser: User;
   isAuthenticated: boolean;
+  private purchasesSubscription: Subscription;
 
   constructor(public authService: AuthenticationService, private router: Router, private userDataService: UserDataService) { }
 
@@ -22,10 +24,16 @@ export class HeaderComponent implements OnInit {
     this.authService.isAuthenticated.subscribe(isAuthenticated => {
       this.isAuthenticated = isAuthenticated;
       if (this.isAuthenticated) {
-        this.currentUser = this.userDataService.curentUser
+        this.currentUser = this.userDataService.curentUser;
         this.userDataService.UpdateAndGetPurchasedMovies();
-        // console.log('inside header', isAuthenticated);
-
+        this.purchasesSubscription = this.userDataService.purchasedMovies.subscribe(
+          data => {
+            if (data) {
+              console.log(data);
+              this.myMoviesCount = data.purchasedMovies.length;
+            }
+          }
+        );
       }
     });
 

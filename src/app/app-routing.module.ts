@@ -1,3 +1,5 @@
+import { PurchasesComponent } from './account/purchases/purchases.component';
+import { FavoritesComponent } from './account/favorites/favorites.component';
 import { NgModule } from '@angular/core';
 import { Routes, RouterModule } from '@angular/router';
 import { HomeComponent } from './home/home.component';
@@ -17,7 +19,9 @@ const routes: Routes = [
   { path: 'cast/create', component: CreateCastComponent },
   { path: 'cast/:id', component: MovieDetailsComponent },
   { path: 'login', component: LoginComponent },
-  { path: 'signup', component: SignUpComponent }
+  { path: 'signup', component: SignUpComponent },
+  { path: 'favorites', component: FavoritesComponent },
+  { path: 'purchases', component: PurchasesComponent },
 ];
 
 @NgModule({

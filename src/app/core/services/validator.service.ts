@@ -32,17 +32,17 @@ export class ValidatorService {
     if (control.value.match(/^(?=.*\d)(?=.*[a-zA-Z!@#$%^&*])(?!.*\s).{6,100}$/)) {
       return null;
     } else {
-      return { 'invalidPassword': true };
+      return { invalidPassword: true };
     }
   }
 
   passwordMatch(group: FormGroup) {
     // console.log('isnide password match');
     // console.log(group);
-    let pass = group.get('password').value;
-    let confirmPassword = group.get('confirmPassword').value;
+    const pass = group.get('password').value;
+    const confirmPassword = group.get('confirmPassword').value;
 
-    return pass === confirmPassword ? null : { passwordNotMatch: true }
+    return pass === confirmPassword ? null : { passwordNotMatch: true };
   }
   // validate(control: AbstractControl): Observable<ValidationErrors> | null {
   //   return this.userService.isEmailExists(control.value).pipe(
