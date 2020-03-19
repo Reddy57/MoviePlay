@@ -16,7 +16,6 @@ export class HeaderComponent implements OnInit {
   myMoviesCount: number;
   currentUser: User;
   isAuthenticated: boolean;
-  private purchasesSubscription: Subscription;
 
   constructor(public authService: AuthenticationService, private router: Router, private userDataService: UserDataService) { }
 
@@ -25,8 +24,8 @@ export class HeaderComponent implements OnInit {
       this.isAuthenticated = isAuthenticated;
       if (this.isAuthenticated) {
         this.currentUser = this.userDataService.curentUser;
-        this.userDataService.UpdateAndGetPurchasedMovies();
-        this.purchasesSubscription = this.userDataService.purchasedMovies.subscribe(
+        this.userDataService.getallPurchasedMovies();
+        this.userDataService.purchasedMovies.subscribe(
           data => {
             if (data) {
               console.log(data);

@@ -29,10 +29,7 @@ export class UserDataService {
     });
   }
 
-  UpdateAndGetPurchasedMovies() {
-
-    // console.log('inside purchased subject');
-
+  getallPurchasedMovies() {
     this.userService
       .getPurchasedMovies(this.curentUser.nameid)
       .subscribe(m => this.purchasedMoviesSubject.next(m));
