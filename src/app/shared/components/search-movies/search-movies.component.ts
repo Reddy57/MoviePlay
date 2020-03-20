@@ -23,7 +23,7 @@ export class SearchMoviesComponent implements OnInit {
       debounceTime(200),
       switchMap(term => term.length < 2 ? []
         : this.movieService.getMovies(term).pipe(
-          tap(() => console.log(term)),
+          // tap(() => console.log(term)),
           catchError(() => {
             this.searchFailed = true;
             return of([]);
@@ -36,5 +36,11 @@ export class SearchMoviesComponent implements OnInit {
 
   ngOnInit() {
   }
+
+  onSelect($event, title) {
+    $event.preventDefault();
+    title.value = '';
+  }
+
 
 }

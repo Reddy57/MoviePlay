@@ -1,4 +1,4 @@
-<input class="form-control mr-sm-2" type="text" placeholder="Search Movies" name="title" aria-label="Search"
+<input class="form-control mr-sm-2" type="text" placeholder="Search Movies" #title name="title" aria-label="Search" (selectItem)="onSelect($event, title)"
   [(ngModel)]="movies" [ngbTypeahead]="search" [inputFormatter]="formatter" [resultTemplate]="rt">
 
 
