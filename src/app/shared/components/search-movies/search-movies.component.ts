@@ -1,6 +1,6 @@
 import { MovieService } from 'src/app/core/services/movie.service';
 import { PagedResults } from './../../models/pagedResult';
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, ViewEncapsulation } from '@angular/core';
 import { Movie } from '../../models/movie';
 import { Observable, of } from 'rxjs';
 import { debounceTime, map, tap, catchError, switchMap } from 'rxjs/operators';
