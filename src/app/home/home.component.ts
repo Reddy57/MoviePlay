@@ -20,7 +20,7 @@ export class HomeComponent implements OnInit {
 
     this.userService.isEmailExists('VerlA.Yosst@gmail.com').subscribe(
       x => { console.log(x); }
-    )
+    );
   }
   private getMovies() {
 

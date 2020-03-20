@@ -4,9 +4,11 @@ import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { HttpClientModule } from '@angular/common/http';
 import { HTTP_INTERCEPTORS } from '@angular/common/http';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+import { NgbTypeaheadModule } from '@ng-bootstrap/ng-bootstrap';
 
-
-import { NgbCarouselModule, NgbCollapseModule, NgbDropdownModule, NgbModalModule, NgbPaginationModule } from '@ng-bootstrap/ng-bootstrap';
+import {
+  NgbCarouselModule, NgbCollapseModule, NgbDropdownModule, NgbModalModule, NgbPaginationModule,
+} from '@ng-bootstrap/ng-bootstrap';
 
 
 import { AppRoutingModule } from './app-routing.module';
@@ -32,6 +34,7 @@ import { HttpTokenInterceptor } from './core/interceptors/http-token.interceptor
 import { FavoriteButtonComponent } from './shared/components/favorite-button/favorite-button.component';
 import { MovieCardListComponent } from './movies/movie-card-list/movie-card-list.component';
 import { MoviePurchaseConfirmComponent } from './movies/movie-purchase-confirm/movie-purchase-confirm.component';
+import { SearchMoviesComponent } from './shared/components/search-movies/search-movies.component';
 
 @NgModule({
   declarations: [
@@ -55,7 +58,8 @@ import { MoviePurchaseConfirmComponent } from './movies/movie-purchase-confirm/m
     MovieListComponent,
     FavoriteButtonComponent,
     MovieCardListComponent,
-    MoviePurchaseConfirmComponent
+    MoviePurchaseConfirmComponent,
+    SearchMoviesComponent
   ],
   imports: [
     BrowserModule,
@@ -72,6 +76,7 @@ import { MoviePurchaseConfirmComponent } from './movies/movie-purchase-confirm/m
     NgbDropdownModule,
     NgbModalModule,
     NgbPaginationModule,
+    NgbTypeaheadModule
   ],
   entryComponents: [MoviePurchaseConfirmComponent],
   providers: [

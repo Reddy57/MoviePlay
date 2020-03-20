@@ -1,0 +1,11 @@
+
+  <input class="form-control mr-sm-2" type="text" placeholder="Search Movies" name="title" aria-label="Search"
+    [(ngModel)]="movies" [ngbTypeahead]="search" [inputFormatter]="formatter" [resultTemplate]="rt">
+
+
+<ng-template #rt let-r="result" let-t="term">
+  <div class="font-weight-bold">
+    {{ r.title}}
+  </div>
+
+</ng-template>

@@ -37,7 +37,7 @@ export class MoviePurchaseConfirmComponent implements OnInit {
 
     this.userService.purchaseMovie(this.purchase).subscribe(
       () => {
-        this.userDataService.UpdateAndGetPurchasedMovies();
+        this.userDataService.getallPurchasedMovies();
         // this.toastr.success('Movie Purchased');
         this.activeModal.close();
       },
