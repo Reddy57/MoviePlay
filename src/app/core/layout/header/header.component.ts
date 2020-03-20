@@ -28,7 +28,7 @@ export class HeaderComponent implements OnInit {
         this.userDataService.purchasedMovies.subscribe(
           data => {
             if (data) {
-              console.log(data);
+              // console.log(data);
               this.myMoviesCount = data.purchasedMovies.length;
             }
           }
