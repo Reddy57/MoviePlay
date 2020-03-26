@@ -15,9 +15,9 @@ const routes: Routes = [
     children: [
       { path: 'toprated', component: MovieListComponent },
       { path: 'topgrossing', component: MovieListComponent },
+      { path: 'genres/:id', component: MovieCardListComponent },
       { path: 'genres', component: GenresComponent },
-      { path: 'genre/:id', component: MovieCardListComponent },
-      { path: 'movie/:id', component: MovieDetailsComponent },
+      { path: ':id', component: MovieDetailsComponent },
       { path: 'cast/:id', component: MovieDetailsComponent },
     
     ]

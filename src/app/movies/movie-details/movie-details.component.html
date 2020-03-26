@@ -33,7 +33,7 @@
           <ng-container *ngFor="let g of movie?.genres">
             <a href="#"
                *ngIf="g"
-               [routerLink]="['/genre/', g?.id ]"
+               [routerLink]="['/movies/genres/', g?.id ]"
                class="badge badge-pill badge-dark ml-1"> {{g?.name}}</a>
           </ng-container>
         </div>
