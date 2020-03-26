@@ -3,49 +3,50 @@ import {
   CanActivate,
   ActivatedRouteSnapshot,
   RouterStateSnapshot,
-  Router,
+  UrlTree,
   CanLoad,
-  Route
+  Route,
+  UrlSegment,
+  Router
 } from "@angular/router";
 import { Observable, of } from "rxjs";
+import { map, catchError } from "rxjs/operators";
 import { AuthenticationService } from "../services/authentication.service";
-import { map, catchError, take } from "rxjs/operators";
 
 @Injectable({
   providedIn: "root"
 })
-export class AuthenticationGuard implements CanActivate, CanLoad {
-  isAuth: boolean;
-
+export class AdminGuard implements CanActivate, CanLoad {
   constructor(
     private authenticationService: AuthenticationService,
     private router: Router
   ) {}
 
-  canLoad(route: Route): Observable<boolean> {
-    return this.IsAuthenticated().pipe(take(1));
+  canLoad(route: Route, segments: UrlSegment[]): Observable<boolean> {
+    console.log("inside canLoad");
+    console.log(segments);
+    return this.checkAdminRole();
+    //return of(true);
   }
+
   canActivate(
     next: ActivatedRouteSnapshot,
     state: RouterStateSnapshot
   ): Observable<boolean> {
-    console.log("Inside Auth Guard");
-    return this.IsAuthenticated(state);
+    return of(true);
   }
 
-  private IsAuthenticated(state?: RouterStateSnapshot) {
-    return this.authenticationService.isAuthenticated.pipe(
+  checkAdminRole(): Observable<boolean> {
+    return this.authenticationService.currentUser.pipe(
       map(e => {
-        if (e) {
+        if (e.role.includes("Admin")) {
           return true;
         } else {
-          this.router.navigate(["/login"], {
-            queryParams: { returnUrl: state.url }
-          });
+          this.router.navigate(["/notauthorized"]);
           return false;
         }
       }),
-      catchError(() => {
+      catchError(err => {
         this.router.navigate(["/login"]);
         return of(false);
       })

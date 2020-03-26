@@ -49,7 +49,9 @@ import { NgbTypeaheadModule } from '@ng-bootstrap/ng-bootstrap';
     NgbModalModule,
     NgbPaginationModule,
     NgbTabsetModule,
-    NgbTypeaheadModule
+    NgbTypeaheadModule,
+    FormsModule,
+    ReactiveFormsModule
 
   ]
 })

@@ -2,7 +2,7 @@
   <li *ngFor="let genre of genres"
       class="m-1">
     <a href="#"
-       [routerLink]="['/genre/', genre.id]">
+       [routerLink]="['movies/genre/', genre.id]">
       {{genre.name}}
     </a>
   </li>

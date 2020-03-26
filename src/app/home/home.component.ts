@@ -1,34 +1,28 @@
-import { Component, OnInit } from '@angular/core';
-import { MovieService } from '../core/services/movie.service';
-import { Movie } from '../shared/models/movie';
-import { UserService } from '../core/services/user.service';
+import { Component, OnInit } from "@angular/core";
+import { MovieService } from "../core/services/movie.service";
+import { Movie } from "../shared/models/movie";
+import { UserService } from "../core/services/user.service";
 
 @Component({
-  selector: 'app-home',
-  templateUrl: './home.component.html',
-  styleUrls: ['./home.component.css']
+  selector: "app-home",
+  templateUrl: "./home.component.html",
+  styleUrls: ["./home.component.css"]
 })
 export class HomeComponent implements OnInit {
   movies: Movie[];
 
-  constructor(private movieService: MovieService, private userService: UserService) { }
+  constructor(
+    private movieService: MovieService,
+    private userService: UserService
+  ) {}
 
   ngOnInit() {
     this.movieService.getTopRatedMovies().subscribe(m => {
       this.movies = m;
     });
-
-    this.userService.isEmailExists('VerlA.Yosst@gmail.com').subscribe(
-      x => { console.log(x); }
-    );
   }
-  private getMovies() {
+  private getMovies() {}
+  movieFavorited(movie: Movie) {}
 
-  }
-  movieFavorited(movie: Movie) {
-  }
-
-  buyMovie(movie: Movie) {
-  }
-
+  buyMovie(movie: Movie) {}
 }
