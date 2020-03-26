@@ -4,7 +4,6 @@ import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { HttpClientModule } from '@angular/common/http';
 import { HTTP_INTERCEPTORS } from '@angular/common/http';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
-import { NgbTypeaheadModule } from '@ng-bootstrap/ng-bootstrap';
 
 import {
   NgbCarouselModule, NgbCollapseModule, NgbDropdownModule, NgbModalModule, NgbPaginationModule,
@@ -14,7 +13,6 @@ import {
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { HomeComponent } from './home/home.component';
-import { GenresComponent } from './genres/genres.component';
 import { LoginComponent } from './auth/login/login.component';
 import { SignUpComponent } from './auth/sign-up/sign-up.component';
 import { FavoritesComponent } from './account/favorites/favorites.component';
@@ -26,21 +24,16 @@ import { UpdateMovieComponent } from './admin/movies/update-movie/update-movie.c
 import { CreateCastComponent } from './admin/movies/create-cast/create-cast.component';
 import { CreateCrewComponent } from './admin/movies/create-crew/create-crew.component';
 import { UsersListComponent } from './admin/users/users-list/users-list.component';
-import { MovieDetailsComponent } from './movies/movie-details/movie-details.component';
-import { MovieCardComponent } from './shared/components/movie-card/movie-card.component';
-import { HeaderComponent } from './core/layout/header/header.component';
-import { MovieListComponent } from './shared/components/movie-list/movie-list.component';
 import { HttpTokenInterceptor } from './core/interceptors/http-token.interceptor';
-import { FavoriteButtonComponent } from './shared/components/favorite-button/favorite-button.component';
-import { MovieCardListComponent } from './movies/movie-card-list/movie-card-list.component';
+import { MoviesModule } from './movies/movies.module';
 import { MoviePurchaseConfirmComponent } from './movies/movie-purchase-confirm/movie-purchase-confirm.component';
-import { SearchMoviesComponent } from './shared/components/search-movies/search-movies.component';
+import { SharedModule } from './shared/shared.module';
+import { CoreModule } from './core/core.module';
 
 @NgModule({
   declarations: [
     AppComponent,
     HomeComponent,
-    GenresComponent,
     LoginComponent,
     SignUpComponent,
     FavoritesComponent,
@@ -52,14 +45,6 @@ import { SearchMoviesComponent } from './shared/components/search-movies/search-
     CreateCastComponent,
     CreateCrewComponent,
     UsersListComponent,
-    MovieDetailsComponent,
-    MovieCardComponent,
-    HeaderComponent,
-    MovieListComponent,
-    FavoriteButtonComponent,
-    MovieCardListComponent,
-    MoviePurchaseConfirmComponent,
-    SearchMoviesComponent
   ],
   imports: [
     BrowserModule,
@@ -76,7 +61,9 @@ import { SearchMoviesComponent } from './shared/components/search-movies/search-
     NgbDropdownModule,
     NgbModalModule,
     NgbPaginationModule,
-    NgbTypeaheadModule
+    MoviesModule,
+    SharedModule,
+    CoreModule
   ],
   entryComponents: [MoviePurchaseConfirmComponent],
   providers: [

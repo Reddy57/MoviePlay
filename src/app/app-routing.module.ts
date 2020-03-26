@@ -9,19 +9,22 @@ import { MovieCardListComponent } from './movies/movie-card-list/movie-card-list
 import { MovieDetailsComponent } from './movies/movie-details/movie-details.component';
 import { CreateMovieComponent } from './admin/movies/create-movie/create-movie.component';
 import { CreateCastComponent } from './admin/movies/create-cast/create-cast.component';
+import { AuthenticationGuard } from './core/guards/authentication.guard';
 
 
 const routes: Routes = [
   { path: '', component: HomeComponent },
   { path: 'genre/:id', component: MovieCardListComponent },
-  { path: 'movie/create', component: CreateMovieComponent },
   { path: 'movie/:id', component: MovieDetailsComponent },
-  { path: 'cast/create', component: CreateCastComponent },
   { path: 'cast/:id', component: MovieDetailsComponent },
   { path: 'login', component: LoginComponent },
   { path: 'signup', component: SignUpComponent },
-  { path: 'favorites', component: FavoritesComponent },
-  { path: 'purchases', component: PurchasesComponent },
+
+  { path: 'movie/create', component: CreateMovieComponent },
+  { path: 'cast/create', component: CreateCastComponent },
+  
+  { path: 'favorites', component: FavoritesComponent, canActivate:[AuthenticationGuard]  },
+  { path: 'purchases', component: PurchasesComponent, canActivate:[AuthenticationGuard] },
 ];
 
 @NgModule({
