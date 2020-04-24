@@ -1,8 +1,12 @@
 <div>
   <app-header></app-header>
-  <div class="alert alert-primary" *ngIf="discountMessage" role="alert">
-    {{ discountMessage }}
-  </div>
+  <ngb-alert
+    class="alert alert-primary"
+    *ngIf="discountMessage"
+    [type]="success"
+    (close)="close(alert)"
+    >{{ discountMessage }}</ngb-alert
+  >
   <div class="container-fluid mt-1">
     <router-outlet></router-outlet>
   </div>

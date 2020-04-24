@@ -11,7 +11,8 @@ import {
   NgbDropdownModule,
   NgbModalModule,
   NgbPaginationModule,
-  NgbTabsetModule
+  NgbTabsetModule,
+  NgbAlertModule
 } from "@ng-bootstrap/ng-bootstrap";
 import { GenresComponent } from "../genres/genres.component";
 import { MovieCardComponent } from './components/movie-card/movie-card.component';
@@ -50,6 +51,7 @@ import { NgbTypeaheadModule } from '@ng-bootstrap/ng-bootstrap';
     NgbPaginationModule,
     NgbTabsetModule,
     NgbTypeaheadModule,
+    NgbAlertModule,
     FormsModule,
     ReactiveFormsModule
 
