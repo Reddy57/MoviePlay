@@ -10,7 +10,7 @@
 </ng-template> -->
 
 <ng-template #rt let-r="result" let-t="term">
-  <a [routerLink]="[ '/movie/', r.id ]" class="text-dark">
+  <a [routerLink]="[ '/movies/', r.id ]" class="text-dark">
     <!-- {{r.title}} -->
     <img [src]="r['posterUrl']" class="mr-1" style="width: 16px">
     <ngb-highlight [result]="r.title" [term]="t"></ngb-highlight>

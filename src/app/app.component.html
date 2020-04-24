@@ -1,8 +1,9 @@
 <div>
   <app-header></app-header>
-
+  <div class="alert alert-primary" *ngIf="discountMessage" role="alert">
+    {{ discountMessage }}
+  </div>
   <div class="container-fluid mt-1">
     <router-outlet></router-outlet>
   </div>
-
 </div>
